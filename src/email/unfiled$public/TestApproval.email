@@ -1,0 +1,8 @@
+Hi {!NullValue(Contact.FirstName, "Sir or Madam")},
+
+    Please approve for User : {!Approval_Requesting_User.FirstName}
+    Click Here to approve:  {!ApprovalRequest.Internal_URL}
+
+
+Thanks,
+Test

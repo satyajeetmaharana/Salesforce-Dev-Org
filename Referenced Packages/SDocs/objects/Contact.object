@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <webLinks>
+        <fullName>Add_to_Mass_Merge_List</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add to Mass Merge List</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>var objectAPIName = &quot;Contact&quot;;
+var oRecords = {!GETRECORDIDS($ObjectType.Contact)};
+{!REQUIRESCRIPT(&quot;/soap/ajax/36.0/connection.js&quot;)}
+
+var url = parent.location.href; //string for the URL of the current page
+var jRecords = [];
+
+	if (oRecords[0] == null) { //no record selected
+    		alert(&quot;Please select at least one record.&quot;);
+	}
+	else
+	{
+                var csvIds = &quot;&quot;;
+                for(var i in oRecords){
+                   csvIds += &quot;&apos;&quot;+ oRecords[i] + &quot;&apos;,&quot;;
+                }
+                csvIds = csvIds.slice(0, csvIds.length - 1);
+                if(csvIds.length &gt; 1){
+                   csvIds = &quot;(&quot; + csvIds + &quot;)&quot;;
+                }
+
+		var oResult = sforce.connection.query(&quot;select Name, Id from &quot;+objectAPIName+&quot; Where Id IN &quot; +csvIds); 
+		var records = oResult.getArray(&quot;records&quot;);
+		for (var i=0; i&lt; records.length; i++) 
+		{
+		  var sdjob = new sforce.SObject(&quot;SDOC__SDJob__c&quot;);
+		  sdjob.SDOC__oId__c = records[i].Id;
+		  sdjob.SDOC__objSortVal__c = records[i].Name;
+		  sdjob.SDOC__runas__c = &quot;{!$User.Username}&quot;;
+		  sdjob.SDOC__Status__c = &quot;Selected&quot;;
+		  sdjob.SDOC__type__c = &quot;Bulk Job - List View&quot;;
+		  sdjob.SDOC__objAPIName__c = objectAPIName;
+		  jRecords.push(sdjob);
+		}
+		var result = sforce.connection.create(jRecords);
+	}
+   
+
+var errors = []; 
+if (result &amp;&amp; result.length){ 
+var numFailed = 0; 
+var numSucceeded = 0; 
+for (var i = 0; i &lt; result.length; i++){ 
+var res = result[i]; 
+if (res &amp;&amp; res.success == &apos;true&apos;){ 
+numSucceeded++; 
+} else { 
+var es = res.getArray(&quot;errors&quot;); 
+if (es.length &gt; 0) { 
+errors.push(es[0].message); 
+} 
+numFailed++; 
+} 
+} 
+if (numFailed &gt; 0){ 
+alert(&quot;Failed: &quot; + numFailed + &quot;\nSucceeded: &quot; + numSucceeded + &quot; \n Due to: &quot; + errors.join(&quot;\n&quot;)); 
+} else {
+     var sdresult = sforce.connection.query(&quot;SELECT count(Id) jCount FROM SDOC__SDJOB__c WHERE ownerid = &apos;{!$User.Id}&apos; and SDOC__objAPIName__c = &apos;&quot;+objectAPIName+&quot;&apos;&quot;);
+     alert(numSucceeded + &quot;  Records Successfully Added.\n&quot; +sdresult.records.jCount+&quot;  Total Records are now in your Mass Merge List.&quot;); 
+} 
+} 
+//window.location.reload();</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Email_Docs</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Email S-Docs</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/SDOC__SDEmail?id={!Contact.Id}&amp;Object=Contact</url>
+    </webLinks>
+    <webLinks>
+        <fullName>S_Docs</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>S-Docs</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/SDOC__SDCreate1?id={!Contact.Id}&amp;Object=Contact</url>
+    </webLinks>
+    <webLinks>
+        <fullName>View_Mass_Merge_List</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>View Mass Merge List</masterLabel>
+        <openType>sidebar</openType>
+        <page>SDJobContact</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
+</CustomObject>

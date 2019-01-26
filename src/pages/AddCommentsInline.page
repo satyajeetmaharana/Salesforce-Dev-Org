@@ -1,0 +1,12 @@
+<apex:page standardController="CollegeApplication__c" extensions="AddCommentsInlineExt">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton action="{!saveAddComments}" value="Save Add Comments"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection >
+                <apex:inputField value="{!caObj.Add_Comments__c}" label="Add comments"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

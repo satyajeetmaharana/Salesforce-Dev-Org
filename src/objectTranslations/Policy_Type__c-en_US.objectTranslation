@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Policy Type</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Policy Types</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account_Name__c</name>
+        <relationshipLabel><!-- Policy Types --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Due Amount --></label>
+        <name>Due_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Insured Amount --></label>
+        <name>Insured_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Policy --></label>
+        <name>Policy_Name__c</name>
+        <relationshipLabel><!-- Policy Types --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+    </fields>
+    <layouts>
+        <layout>New Page layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

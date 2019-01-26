@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Profile Group Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Profile Group Mapping</value>
+    </caseValues>
+    <fields>
+        <label><!-- Group Id --></label>
+        <name>Group_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Group Name --></label>
+        <name>Group_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile ID --></label>
+        <name>Profile_ID__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

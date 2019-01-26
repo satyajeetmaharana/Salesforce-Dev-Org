@@ -1,0 +1,52 @@
+<apex:page >
+    Tourism in the East Village
+    <html>
+        <script type="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js">
+            var Http = new XMLHttpRequest();
+            var url='https://thingproxy.freeboard.io/fetch/https://api.yelp.com/v3/events';
+            Http.open("POST", url);
+            Http.setRequestHeader('API_KEY', 'VnaXc5CdflKDKEMYS4lot_4_MmhIg86zqq-x2wN1lbPOfKBCTJWoJtafZI6WKf87qpdaJsLFVOC_292oCO2EIXB7bErNGSZLKlVsCXq5MW8Uc0PpvSFhFhgaCA-cW3Yx');
+            Http.send();
+            Http.onreadystatechange=(e)=>{
+                console.log(Http.responseText)
+            }
+        </script>
+        <div id="">
+            <table>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Event Time</th>
+                    <th>Event Distance From User(miles)</th>
+                    <th>Event Cost($)</th>
+                </tr>
+                <tr>
+                    <td><a onclick="showView(1);" href="#">ABC</a></td>
+                    <td>10:15 PM</td>
+                    <td>10</td>
+                    <td>20.20</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <td>Event Name</td>
+                    <td>ABC</td>
+                    <td>Event Time</td>
+                    <td>10:15 PM</td>
+                </tr>
+                <tr>
+                    <td>Event Distance</td>
+                    <td>10</td>
+                    <td>Event Cost($)</td>
+                    <td>20.20</td>
+                </tr>
+                <tr>
+                    <td>Event Location</td>
+
+                    <!-- MAP ELEMENT -->
+                </tr>
+            </table>
+        </div>
+    </html>
+</apex:page>

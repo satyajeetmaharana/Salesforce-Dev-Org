@@ -1,0 +1,149 @@
+<apex:page showHeader="false" sidebar="false" standardStylesheets="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
+<apex:form >
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">  
+        <head>
+            <apex:stylesheet value="{!URLFOR($Resource.SLDS100, 'assets/styles/salesforce-lightning-design-system-vf.css')}"/>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+            <style>
+                .login-panel{
+                    border: 1px solid #ccc;
+                    width:40%;
+                    border-radius:5px;
+                    /*box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+                    text-decoration: none;
+                    -webkit-transition: all 0.1s linear;
+                    -moz-transition: all 0.1s linear;
+                    transition: all 0.1s linear;*/
+                    font-size:15px;
+                }
+                .input-element{
+                    height: 45px;
+                    font-size: 16px;
+                    border-radius:5px;
+                    width:95%;
+                }
+                body {
+                    padding-top: 90px;
+                }
+                .slds-button--brand{
+                    border-radius:5px;
+                    padding:10px 10px 10px 10px;
+                    min-width:20%;
+                    width:95%;
+                }
+                .active{
+                    font-size:18px;
+                    font-weight:bold;
+                }
+                .slds-col{
+                    margin-top:10px;
+                }
+                .login-panel>.heading a{
+                    text-decoration:none;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="slds">
+                <div align="center">
+                    <div class="login-panel">
+                        <div class="heading">
+                            <div class="slds-grid slds-wrap">
+                                 <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-2 slds-medium-size--1-of-4">
+                                    <a href="#" id="login-form-link" class="active">Login</a>
+                                  </div>
+                                  <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-2 slds-medium-size--1-of-4">
+                                    <a href="#" id="register-form-link">Register</a>
+                                  </div>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div id="login-form">
+                            <input type="text" name="username" id="username" placeholder="Username" value="" class="input-element"/>
+                            <br/><br/>
+                            <input type="password" name="password" id="password" placeholder="Password" class="input-element"/>
+                            <br/><br/>
+                            <input type="checkbox" name="rememberme" id="rememberme"/>
+                            <label for="rememberme">Remember Me</label>
+                            <br/><br/>
+                            <button class="slds-button--brand" id="loginbutton">LOG IN</button>
+                            <br/><br/>
+                            <a href="">Forgot Password?</a>
+                            <br/><br/>
+                        </div>
+                        <div id="register-form" style="display:none">
+                            <input type="text" name="newusername" id="newusername" placeholder="Username" value="" class="input-element"/>
+                            <br/><br/>
+                            <input type="email" name="email" id="email" placeholder="Email Address" class="input-element"/>
+                            <br/><br/>
+                            <input type="password" name="newpassword" id="newpassword" placeholder="Password" class="input-element"/>
+                            <br/><br/>
+                            <input type="password" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" class="input-element"/>
+                            <br/><br/>
+                            <button class="slds-button--brand">REGISTER NOW</button>
+                            <br/><br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                $(document).ready(function(e){
+                    var savedUsername= getCookie("username");
+                    $('#username').val(savedUsername);
+                    var rememberme = getCookie("rememberme");
+                    var isTrueSet = (rememberme == 'true');
+                    $('#rememberme').attr('checked', isTrueSet );
+                    $('#login-form-link').click(function(){
+                      $('#login-form').delay(200).fadeIn(200);
+                      $('#register-form').fadeOut(200);
+                      $('#register-form-link').removeClass('active');
+                      $(this).addClass('active');
+                      e.preventDefault();
+                    });
+                    
+                    $('#register-form-link').click(function(e){
+                      $('#register-form').delay(200).fadeIn(200);
+                      $('#login-form').fadeOut(200);
+                      $('#login-form-link').removeClass('active');
+                      $(this).addClass('active');
+                      e.preventDefault();
+                    });
+                    
+                    $('#loginbutton').click(function(e){
+                        var uname = $('#username').val();
+                        if($('#rememberme').is(":checked")){
+                            alert(uname);
+                            setCookie("username",uname,30);
+                            setCookie("rememberme",true,30);
+                        }
+                        else{
+                            setCookie("rememberme",false,30);
+                        }
+                    });
+                });
+                function setCookie(cname, cvalue, exdays) {
+                    var d = new Date();
+                    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                    var expires = "expires="+d.toUTCString();
+                    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+                }
+                
+                function getCookie(cname) {
+                    var name = cname + "=";
+                    var ca = document.cookie.split(';');
+                    for(var i = 0; i < ca.length; i++) {
+                        var c = ca[i];
+                        while (c.charAt(0) == ' ') {
+                            c = c.substring(1);
+                        }
+                        if (c.indexOf(name) == 0) {
+                            return c.substring(name.length, c.length);
+                        }
+                    }
+                    return "";
+                }
+            </script>
+        </body>
+        </html>
+    </apex:form>
+</apex:page>

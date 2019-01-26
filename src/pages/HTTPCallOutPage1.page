@@ -1,0 +1,10 @@
+<apex:page controller="HTTPCallOutPageController1">
+    <apex:form >
+        <apex:outputPanel id="op">
+            URL : <apex:inputText value="{!endPointUrl}"/> <br/>
+            
+            Response : <apex:outputText value="{!response}"></apex:outputText>
+        </apex:outputPanel>
+        <apex:commandButton value="Call" action="{!callHTTP}" reRender="op"/>
+    </apex:form>
+</apex:page>

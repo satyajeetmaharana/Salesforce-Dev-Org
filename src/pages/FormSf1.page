@@ -1,0 +1,22 @@
+<apex:page standardController="Opportunity" extensions="FormSf1Ext">
+  <apex:form >
+      <div>
+          <div>
+              <apex:outputLabel value="Case Subject"/>
+              <apex:inputField value="{!caseRecord.Subject}"/>
+          </div>
+          <div>
+              <apex:outputLabel value="Are You An Old Customer?"/>
+              <apex:inputField value="{!caseRecord.AreYouAnOldCustomer__c}">
+                  <apex:actionSupport event="onchange" reRender="custNo"/>
+              </apex:inputField>
+          </div>
+          <div>
+              <apex:outputPanel id="custNo" >
+                  <apex:outputLabel value="Customer Number" rendered="{!caseRecord.AreYouAnOldCustomer__c == 'Yes'}"/>
+                  <apex:inputField value="{!caseRecord.CustomerNumber__c}" rendered="{!caseRecord.AreYouAnOldCustomer__c == 'Yes'}"/>
+              </apex:outputPanel>
+          </div>
+      </div>
+  </apex:form>  
+</apex:page>

@@ -1,0 +1,30 @@
+<apex:page controller="dependentPicklistController">
+    <apex:form >
+    <apex:pageBlock >
+        <apex:pageBlockSection >
+           <apex:pageblockSectionItem >
+               <apex:outPutLabel >State: </apex:outPutLabel>
+           </apex:pageblockSectionItem>
+           <apex:pageBlockSectionItem >
+               <apex:selectList size="1" value="{!state}">
+                   <apex:selectOptions value="{!states}">
+                   </apex:selectOptions>
+                   <apex:actionSupport event="onchange" reRender="district"/>
+               </apex:selectList>
+           </apex:pageBlockSectionItem>
+           
+           <apex:pageblockSectionItem >
+               <apex:outPutLabel >District: </apex:outPutLabel>
+           </apex:pageblockSectionItem>
+           <apex:pageBlockSectionItem >
+               <apex:selectList size="1" value="{!district}" id="district">
+                   <apex:selectOptions value="{!districts}">
+                   </apex:selectOptions>
+               </apex:selectList>
+           </apex:pageBlockSectionItem> 
+        
+        
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

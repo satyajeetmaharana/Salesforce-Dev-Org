@@ -1,0 +1,46 @@
+<apex:page controller="fieldController"> 
+        <apex:form > 
+            <apex:pageBlock > 
+                <apex:pageMessages id="message"/> 
+                Select Object 
+                <apex:selectList value="{!objName}" size="1" title="Object"> 
+                    <apex:actionSupport event="onchange" action="{!showfields}" /> 
+                    <apex:selectOptions value="{!objectall}" /> 
+                </apex:selectList> 
+                <br/>
+                Select Fields
+                <apex:selectList multiselect="true" size="7" value="{!fieldSelect}" title="Field"> 
+                    <apex:selectOptions value="{!fieldAll}"/> 
+                </apex:selectList> 
+                <br/>
+                <apex:outputPanel >
+                Maximum # Records to Display<br/>
+                <apex:selectList value="{!limitselect}" size="4" >
+                    <apex:selectOptions value="{!limits}" ></apex:selectOptions>
+                </apex:selectList>
+                <br/>
+                Sort As
+                <apex:selectRadio value="{!order}" title="Order">
+                    <apex:selectOptions value="{!ascendingdesc}" ></apex:selectOptions>
+                </apex:selectRadio>
+                </apex:outputPanel>
+                <apex:commandButton value="Execute Query" action="{!executequery}" rerender="tableshow,message,query"/> 
+                <br/>
+                <apex:outputPanel id="query">
+                    SOQL Query<br/>
+                    <apex:outputText value="{!querypage}"></apex:outputText>
+                </apex:outputPanel>
+                
+                <br/>
+                <apex:outputPanel id="tableshow"> 
+                Query Result
+                <apex:pageBlockTable value="{!objectAllrecords}" var="obj"> 
+                    <apex:repeat value="{!fieldSelect}" var="Field"> 
+                        <apex:column value="{!obj[Field]}"/> 
+                    </apex:repeat> 
+                </apex:pageBlockTable> 
+                </apex:outputPanel>
+                
+            </apex:pageBlock> 
+        </apex:form> 
+    </apex:page>

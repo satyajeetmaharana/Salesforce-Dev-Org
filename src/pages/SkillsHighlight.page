@@ -1,0 +1,18 @@
+<apex:page controller="SkillsHighlightController">
+    <html>
+        <body>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Completion</th>
+                </tr>
+                <apex:repeat value="{!SkillWrapperList}" var="skill">
+                    <tr>
+                        <td>{!skill.skill.Name}</td>
+                        <td><progress value="{!skill.completedPer}" max="100"></progress></td>
+                    </tr>
+                </apex:repeat>
+            </table>
+        </body>
+    </html>
+</apex:page>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Skill</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Skills</value>
+    </caseValues>
+    <fields>
+        <label><!-- Completion --></label>
+        <name>Completion__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsInactive --></label>
+        <name>IsInactive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Links --></label>
+        <name>Links__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,44 @@
+<apex:page standardController="Employee__c">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageblockSection columns="1">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Employee Name"/>
+                    <apex:inputField value="{!Employee__c.Name}" required="true"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Designation"/>
+                    <apex:inputField value="{!Employee__c.Designation__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Company"/>
+                    <apex:inputField value="{!Employee__c.Company__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Phone Number"/>
+                    <apex:inputField value="{!Employee__c.Phone_Number__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Email"/>
+                    <apex:inputField value="{!Employee__c.Email__c}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Type"/>
+                    <apex:inputField value="{!Employee__c.Type__c}">
+                        <apex:actionSupport event="onchange" reRender="changeRequest" />
+                    </apex:inputField>
+                </apex:pageBlockSectionItem>
+                <apex:outputPanel id="changeRequest">
+                    <apex:pageBlockSectionItem rendered="{!Employee__c.Type__c=='Temporary'}">
+                        <apex:outputLabel value="Start Date"/>
+                        <apex:inputField value="{!Employee__c.Start_Date__c}"/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem rendered="{!Employee__c.Type__c=='Temporary'}">
+                        <apex:outputLabel value="End Date"/>
+                        <apex:inputField value="{!Employee__c.End_Date__c}"/>
+                    </apex:pageBlockSectionItem>
+                </apex:outputPanel>
+            </apex:pageblockSection>
+        </apex:pageBlock>
+    </apex:form>    
+</apex:page>

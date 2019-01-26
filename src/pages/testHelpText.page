@@ -1,0 +1,29 @@
+<apex:page >
+    <style type="text/css">   
+        .imgclass:hover{   
+            background-image: url(/img/help/helpOrbs.gif);   
+            background-repeat: no-repeat;   
+            width: 16px;   
+            height: 15px;      
+            background-position: right;   
+          
+        }   
+        .imgclass{   
+            background-image: url(/img/help/helpOrbs.gif);   
+            background-repeat: no-repeat;   
+            width: 16px;   
+            height: 15px;   
+        }   
+    </style>  
+    <apex:pageBlock >
+        <apex:pageBlockSection >
+            <apex:pageblockSectionItem helpText="Help Text Here">
+                 <apex:outputLabel value="Investment Value" for="name">
+                    <!--<img src="/s.gif"  class="helpOrb" title="Your Help Text Here " />-->
+                 </apex:outputLabel>
+                <apex:outputText >
+                </apex:outputText>
+            </apex:pageblockSectionItem> 
+        </apex:pageBlockSection>        
+    </apex:pageBlock>
+</apex:page>

@@ -1,0 +1,22 @@
+<apex:page standardController="Opportunity" extensions="GenerateOppPDFExt" renderAs="PDF" >
+    <apex:pageBlock >
+        <apex:pageblockSection >
+                <apex:outputText label="Opportunity Name " value="{!oppRec.Name}">
+                </apex:outputText>
+                <apex:outputText label="Parent Account Name " value="{!oppRec.Account.Name}">
+                </apex:outputText>
+                <apex:outputText label="Stage " value="{!oppRec.StageName}">
+                </apex:outputText>
+                <apex:outputText label="Type " value="{!oppRec.Type}">
+                </apex:outputText>
+        </apex:pageblockSection>
+        <apex:pageBlockTable title="Product Details" value="{!lstOfOppLineItems}" var="opplinerec" border="2">
+            <apex:column headerValue="Discount" value="{!opplinerec.Discount}"/>
+            <apex:column headerValue="List Price" value="{!opplinerec.ListPrice}"/>
+            <apex:column headerValue="Product Code" value="{!opplinerec.PriceBookEntry.ProductCode}"/>
+            <apex:column headerValue="Quantity" value="{!opplinerec.Quantity}"/>
+            <apex:column headerValue="Subtotal" value="{!opplinerec.Subtotal}"/>
+            <apex:column headerValue="TotalPrice" value="{!opplinerec.TotalPrice}"/>
+        </apex:pageBlockTable> 
+    </apex:pageBlock>
+</apex:page>

@@ -1,0 +1,56 @@
+<apex:page controller="CollegesAtAGlanceController" standardStylesheets="false" sidebar="false">
+    <apex:form >
+    <html>
+        <head>
+            <apex:includescript value="//code.jquery.com/jquery-1.11.1.min.js" / >
+            <apex:includescript value="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" />
+            <apex:stylesheet value="//cdn.datatables.net/1.10.4/css/jquery.dataTables.css" />
+            <apex:stylesheet value="{!URLFOR($Resource.Bootstrap, '/dist/css/bootstrap.min.css')}"/>
+            <script  type="text/javascript">
+                j$ = jQuery.noConflict();
+                j$(document).ready( function () {
+                    var collegeTable= j$('[id$="collegeTable"]').DataTable({
+                        "scrollY":        "800px",
+                        "scrollCollapse": true,
+                        "paging":         false
+                    });
+                });
+            </script>
+        </head>
+        
+        <body>
+            <table id="collegeTable" class="display">
+                <thead>
+                <tr>
+                    <th>College Name</th>
+                    <th>Status</th>
+                    <th>Home/Login URL</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Rating</th>
+                    <th>Window Open</th>
+                    <th>Deadline</th>
+                </tr>
+                </thead>
+                <tbody>
+                <apex:repeat value="{!lstCollegeApplicationWrapper}" var="collegeApplicationLine" id="MyId">
+                    <tr> 
+                        <apex:outputPanel >
+                            <td><a href="/{!collegeApplicationLine.collegeapplication.Id}" >{!collegeApplicationLine.college.Name}</a> </td>
+                            <td>{!collegeApplicationLine.collegeApplication.Status__c}</td>
+                            <td><a style="color:blue;" href="{!collegeApplicationLine.collegeApplication.HomePage__c}" target="_blank">Home</a> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<apex:outputPanel rendered="{!collegeApplicationLine.collegeApplication.LoginPage__c == null}">Login</apex:outputPanel><apex:outputPanel rendered="{!collegeApplicationLine.collegeApplication.LoginPage__c != null}"><a style="color:blue;" href="{!collegeApplicationLine.collegeApplication.LoginPage__c}" target="_blank" >Login</a></apex:outputPanel>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<apex:outputPanel rendered="{!collegeApplicationLine.collegeApplication.YocketLink__c == null}">Yocket</apex:outputPanel><apex:outputPanel rendered="{!collegeApplicationLine.collegeApplication.YocketLink__c != null}"><a style="color:blue;" href="{!collegeApplicationLine.collegeApplication.YocketLink__c}" target="_blank" >Yocket</a></apex:outputPanel></td>
+                            <td>{!collegeApplicationLine.collegeApplication.Username__c}</td>
+                            <td>{!collegeApplicationLine.collegeApplication.Password__c}</td>
+                            <td>{!collegeApplicationLine.collegeApplication.College__r.Rating}</td>
+                            <td><apex:outputText value="{0,date,MMMM d','  yyyy}"> <apex:param value="{!collegeApplicationLine.collegeApplication.WindowOpen__c}" /> </apex:outputText></td>
+                            <td><apex:outputText value="{0,date,MMMM d','  yyyy}"> <apex:param value="{!collegeApplicationLine.collegeApplication.Deadline__c}" /> </apex:outputText></td>
+                        </apex:outputPanel>
+                    </tr>
+                </apex:repeat>
+                </tbody>
+            </table>
+             
+        </body>
+    </html>
+    </apex:form>
+</apex:page>

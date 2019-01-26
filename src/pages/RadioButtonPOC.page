@@ -1,0 +1,17 @@
+<apex:page controller="RadioButtonPOCController">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockTable value="{!accountList}" var="account">
+                <apex:column headerValue="Select">
+                    <input type= "Radio" name="radioButton" value="{!account.Name}"/>
+                </apex:column>
+                <apex:column headerValue="Name">
+                    <apex:outputText value="{!account.Name}"/>
+                </apex:column>
+            </apex:pageBlockTable>
+            <apex:commandButton action="{!showSelected}" reRender="accId" value="Show Selected AccId"/>
+            <br/><br/>
+            <apex:outputText value="{!selectAccid}" id="accId" />
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

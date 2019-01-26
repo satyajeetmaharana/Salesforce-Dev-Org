@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>College_apps</letterhead>
+    <name>Reminder Window Open</name>
+    <style>freeForm</style>
+    <subject>{!Account.Name} : Application Window Now Open</subject>
+    <textOnly>Hi Satyajeet,
+
+The application window is now open.
+Application record Link : {!CollegeApplication__c.Name}
+College Login URL : {!CollegeApplication__c.LoginPage__c}
+Username : {!CollegeApplication__c.Username__c}
+Status : {!CollegeApplication__c.Status__c}
+Application Deadline : {!CollegeApplication__c.Deadline__c}
+
+
+Please take action at the earliest.
+
+
+Thanks &amp; Regards,
+Satyajeet Maharana</textOnly>
+    <type>html</type>
+</EmailTemplate>

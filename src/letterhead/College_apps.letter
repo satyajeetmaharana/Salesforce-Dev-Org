@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Letterhead xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <backgroundColor>#000000</backgroundColor>
+    <bodyColor>#FFFFFF</bodyColor>
+    <bottomLine>
+        <color>#666666</color>
+        <height>2</height>
+    </bottomLine>
+    <footer>
+        <backgroundColor>#FFFFFF</backgroundColor>
+        <height>100</height>
+        <horizontalAlignment>Left</horizontalAlignment>
+        <verticalAlignment>Top</verticalAlignment>
+    </footer>
+    <header>
+        <backgroundColor>#33FF33</backgroundColor>
+        <height>10</height>
+        <horizontalAlignment>Center</horizontalAlignment>
+        <verticalAlignment>Middle</verticalAlignment>
+    </header>
+    <middleLine>
+        <color>#666666</color>
+        <height>2</height>
+    </middleLine>
+    <name>College apps</name>
+    <topLine>
+        <color>#666666</color>
+        <height>2</height>
+    </topLine>
+</Letterhead>

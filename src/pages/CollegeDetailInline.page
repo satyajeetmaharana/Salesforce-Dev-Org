@@ -1,0 +1,50 @@
+<apex:page standardController="CollegeApplication__c" doctype="html" extensions="CollegeDetailInlineExt">
+    <html>
+        <head>
+        </head>
+        <body>
+            <apex:form >
+                <apex:pageBlock id="pb">
+                    <apex:pageBlockButtons location="top">
+                        <apex:commandButton value="Edit College Details" action="{!editAccount}" reRender="pb" rendered="{!NOT(editMode)}"/>
+                        <apex:commandButton value="Save" action="{!saveAccount}" reRender="pb" rendered="{!editMode}"/>
+                        <apex:commandButton value="Cancel" action="{!cancelEdit}" reRender="pb" rendered="{!editMode}" immediate="true"/>
+                    </apex:pageBlockButtons>
+                    <apex:pageBlockSection columns="2">
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="College Name"></apex:outputLabel>
+                            <apex:outputField value="{!college.Name}"/>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem rendered="{!NOT(EditMode)}">
+                            <apex:outputLabel value="ETS Institutional Code"></apex:outputLabel>
+                            <apex:outputField value="{!college.ETSInstitutionalCode__c}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem rendered="{!EditMode}">
+                            <apex:outputLabel value="ETS Institutional Code"></apex:outputLabel>
+                            <apex:inputField value="{!college.ETSInstitutionalCode__c}"/>
+                        </apex:pageBlockSectionItem>
+                        
+                        
+                        <apex:pageBlockSectionItem rendered="{!NOT(EditMode)}">
+                            <apex:outputLabel value="ETS Department Code"></apex:outputLabel>
+                            <apex:outputField value="{!college.ETSDepartmentCode__c}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem rendered="{!EditMode}">
+                            <apex:outputLabel value="ETS Department Code"></apex:outputLabel>
+                            <apex:inputField value="{!college.ETSDepartmentCode__c}"/>
+                        </apex:pageBlockSectionItem>
+                        
+                        <apex:pageBlockSectionItem rendered="{!NOT(EditMode)}">
+                            <apex:outputLabel value="Description"></apex:outputLabel>
+                            <apex:outputField value="{!college.Description}" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem rendered="{!EditMode}">
+                            <apex:outputLabel value="Description"></apex:outputLabel>
+                            <apex:inputField value="{!college.Description}"/>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>           
+                </apex:pageBlock>
+            </apex:form>
+        </body>
+    </html>
+</apex:page>

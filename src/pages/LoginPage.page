@@ -1,0 +1,29 @@
+<apex:page controller="LoginPageController" docType="html" standardStylesheets="false" showHeader="false" sidebar="false">
+  <html>
+     <head>
+        <h1> Hi This is your home page </h1>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+      </head>
+      <body>
+          <apex:form >
+              <apex:pageMessages id="msg"></apex:pageMessages>
+              <table>
+                  <tr>
+                      <td>Username :</td>
+                      <td>
+                          <apex:inputText value="{!userName}" styleClass="form-control"/>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>Password :</td>
+                      <td>
+                          <apex:inputSecret value="{!password}" styleClass="form-control"/>
+                      </td>
+                  </tr>
+              </table>
+              <apex:commandButton action="{!login}" value="Login" reRender="msg" styleClass="btn btn-primary"/>
+              Not registered?<apex:commandLink action="{!newUserRedirect}" value="Click here to register"/>    
+          </apex:form>
+      </body>
+  </html>
+</apex:page>

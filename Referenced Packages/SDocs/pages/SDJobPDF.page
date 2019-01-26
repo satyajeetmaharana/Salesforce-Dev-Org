@@ -1,0 +1,8 @@
+<apex:page standardController="SDOC__SDJob__c" extensions="SDOC.SDJobTemplateController" showHeader="false" standardStylesheets="false"
+renderas="pdf" ApplyhtmlTag="false" cache="true">
+<head>
+<apex:outputText value="{!headerXML}" escape="false"/>
+<apex:styleSheet value="{!URLFOR($Resource.SDOC__SDoc,'SDoc.css')}" />
+</head>
+<apex:outputText value="{!templateXML}" escape="false"/>
+</apex:page>

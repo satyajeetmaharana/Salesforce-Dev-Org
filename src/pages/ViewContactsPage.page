@@ -1,0 +1,21 @@
+<apex:page standardController="Account" extensions="ViewContactsPageController">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageMessages ></apex:pageMessages>
+            <apex:pageBlockTable value="{!lstOfWrapperContact}" var="wrapperRec" id="pbtable">
+                <apex:column headerValue="Select Contacts">
+                    <apex:inputCheckbox value="{!wrapperRec.selected}"/>
+                </apex:column>
+                <apex:column headerValue="Contact Name">
+                    <apex:commandLink >{!wrapperRec.con.Name}</apex:commandLink>
+                </apex:column>
+                <apex:column value="{!wrapperRec.con.Phone}" headerValue="Contact Phone"/>
+                <apex:column value="{!wrapperRec.con.Email}" headerValue="Contact Email"/>
+            </apex:pageBlockTable>
+            <apex:pageBlockButtons location="bottom">
+                    <apex:commandButton action="{!deleteContacts}" value="Delete Selected Contacts"/>
+                    <apex:actionSupport event="oncomplete" reRender="pbtable"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Employee</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Employees</value>
+    </caseValues>
+    <fields>
+        <label><!-- Company --></label>
+        <name>Company__c</name>
+        <relationshipLabel><!-- Employees --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Designation --></label>
+        <name>Designation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email --></label>
+        <name>Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Phone Number --></label>
+        <name>Phone_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Permanent</masterLabel>
+            <translation><!-- Permanent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Temporary</masterLabel>
+            <translation><!-- Temporary --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

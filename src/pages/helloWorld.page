@@ -1,0 +1,6 @@
+<apex:page standardController="Account" id="AccountList">
+  <h1>Congratulations</h1>
+  Hello, Welcome to your PAGE, {!$User.FirstName}!
+  <p>You are viewing the {!account.name} account.</p>
+
+</apex:page>

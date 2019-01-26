@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>S-Doc: Allows auto-generate and email of documents via batch, list view, import, workflow or lightning process builder.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Aid__c</fullName>
+        <deprecated>false</deprecated>
+        <description>(Optional) A comma delimited list of SFDC attachment IDs (from Notes and Attachments) that will be included in any outbound email.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>(Optional) A comma delimited list of SFDC attachment IDs (from Notes and Attachments) that will be included in any outbound email.</inlineHelpText>
+        <label>Incl. Attachments with Email</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Apex_Job_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Apex Job ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipName>S_Docs_Jobs</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Did__c</fullName>
+        <deprecated>false</deprecated>
+        <description>(Optional) A comma delimited list of SFDC Document IDs (from Documents Tab) that will be included in any outbound email.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>(Optional) A comma delimited list of SFDC Document IDs (from Documents Tab) that will be included in any outbound email.</inlineHelpText>
+        <label>Incl. Documents with Email</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Doclist__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Provide a comma delimited list of S-Docs Template IDs that will be created for this Job.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Provide a comma delimited list of S-Docs Template IDs that will be created for this Job.</inlineHelpText>
+        <label>Doclist (Template IDs)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EmailURL__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>EmailURL</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>JobURL__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>JobURL</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Lead__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Lead</label>
+        <referenceTo>Lead</referenceTo>
+        <relationshipLabel>S-Docs Jobs</relationshipLabel>
+        <relationshipName>S_Docs_Jobs</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ObjApiName__c</fullName>
+        <deprecated>false</deprecated>
+        <description>API name should end with &quot;__c&quot; if a custom object. Ensure the Object ID provided matches the object Type in this field.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>API name should end with &quot;__c&quot; if a custom object. Ensure the Object ID provided matches the object Type in this field.</inlineHelpText>
+        <label>Object API Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ObjSortVal__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>ObjSortVal</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Oid__c</fullName>
+        <deprecated>false</deprecated>
+        <description>15 or 18 Character SFDC ID of record</description>
+        <externalId>true</externalId>
+        <inlineHelpText>15 or 18 Character SFDC ID of record</inlineHelpText>
+        <label>Object ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>RunAs__c</fullName>
+        <defaultValue>$User.Username</defaultValue>
+        <deprecated>false</deprecated>
+        <description>User who will generate/email the generated docs. Value should be the user&apos;s unique salesforce login name (in the form of an email address) - NOT the SFDC ID or user&apos;s email. Remote App must be configured per the set-up documentation to use this feature.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>User who will generate/email the generated docs. Value should be the user&apos;s unique salesforce login name (in the form of an email address) - NOT the SFDC ID or user&apos;s email. Remote App must be configured per the set-up documentation to use this feature.</inlineHelpText>
+        <label>Run As User</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SDoc1_View__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IF (NOT(ISBLANK(SDoc1__c)),
+SDoc1__r.View_Link__c, &apos;&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>SDoc1 View</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SDoc1__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>SDoc1</label>
+        <referenceTo>SDoc__c</referenceTo>
+        <relationshipName>SDJobs</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SDoc2_View__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IF (NOT(ISBLANK(SDoc2__c)),
+SDoc2__r.View_Link__c, &apos;&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>SDoc2 View</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SDoc2__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>SDoc2</label>
+        <referenceTo>SDoc__c</referenceTo>
+        <relationshipName>SDJobs1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SendEmail__c</fullName>
+        <defaultValue>&quot;0&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <description>&quot;0&quot; indicates no email will be sent. To auto-email the generated doc(s), set to &quot;1&quot;. 
+&quot;Doclist&quot; must contain a Template ID with fomat set to &quot;HTML&quot; (this will become the email body) and must also set the &quot;to&quot; and &quot;subject&quot; fields for the outbound email.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>&quot;0&quot; indicates no email will be sent. To auto-email the generated doc(s), set to &quot;1&quot;. 
+&quot;Doclist&quot; must contain a Template ID with fomat set to &quot;HTML&quot; (this will become the email body) and must also set the &quot;to&quot; and &quot;subject&quot; fields for the outbound email.</inlineHelpText>
+        <label>Send Email</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Start__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Start Job</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Status_Details__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Status Details</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Status_Link__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>CASE(Status__c,
+&apos;Error&apos;,HYPERLINK( &apos;/&apos;+Id,IMAGE(&quot;/img/msg_icons/error16.png&quot;,&apos;&apos;)+&apos;Error&apos;,&apos;_blank&apos;)
+,
+&apos;Selected&apos;,IMAGE(&apos;/img/s.gif&apos;, &apos;&apos;, 7, 50) &amp; &apos; &apos; &amp; &apos;0%&apos;
+,
+&apos;Completed&apos;, IMAGE(&apos;/img/samples/color_green.gif&apos;,&apos;&apos;,7,50)&amp;&apos; &apos;&amp;&apos;100%&apos;&amp; SDoc1_View__c &amp;&apos; &apos;&amp; SDoc2_View__c 
+,
+IF (ISNUMBER(Status__c),
+      IMAGE(&apos;/img/samples/color_green.gif&apos;, &apos;&apos;, 7, value(Status__c)/2) &amp;
+      IMAGE(&apos;/img/s.gif&apos;, &apos;&apos;, 7, (50-value(Status__c))/2) &amp; &apos; &apos; &amp; Status__c &amp; &apos;%&apos;
+      ,
+      Status__c)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Status Link</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <defaultValue>&quot;Selected&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Completion percentage (0-100)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Indicates Percent Completed. Default of &quot;0&quot; will start the job upon save. 
+Other Values:
+&quot;Selected&quot; : Job is ready but not started. 
+&quot;Completed&quot;: Document created
+&quot;Error&quot;: See Status details for more info</inlineHelpText>
+        <label>Status</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TaskID__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Task ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Task_Subject__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Task Subject</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>SDoc Job</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Type__c</columns>
+        <columns>ObjApiName__c</columns>
+        <columns>Status__c</columns>
+        <columns>Apex_Job_ID__c</columns>
+        <columns>Oid__c</columns>
+        <columns>RunAs__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>CREATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>All1</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>{000000}</displayFormat>
+        <label>SDJob Number</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>S-Docs Jobs</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Oid__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ObjApiName__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>RunAs__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Status_Link__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CREATEDBY_USER</customTabListAdditionalFields>
+        <customTabListAdditionalFields>UPDATEDBY_USER</customTabListAdditionalFields>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <listViewButtons>Delete_Logs</listViewButtons>
+        <searchResultsAdditionalFields>RunAs__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Oid__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Apex_Job_ID__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CREATEDBY_USER</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CREATED_DATE</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <webLinks>
+        <fullName>Delete_Logs</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Delete Logs</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/9.0/connection.js&quot;)}
+
+var records = {!GETRECORDIDS( $ObjectType.SDJob__c)};
+
+if (records[0] == null) {
+alert(&quot;Please select at least one record.&quot;) }
+else {
+
+var errors = [];
+var result = sforce.connection.deleteIds(records);
+if (result &amp;&amp; result.length){
+var numFailed = 0;
+var numSucceeded = 0;
+for (var i = 0; i &lt; result.length; i++){
+var res = result[i];
+if (res &amp;&amp; res.success == &apos;true&apos;){
+numSucceeded++;
+} else {
+var es = res.getArray(&quot;errors&quot;);
+if (es.length &gt; 0) {
+errors.push(es[0].message);
+}
+numFailed++;
+}
+}
+if (numFailed &gt; 0){
+alert(&quot;Failed: &quot; + numFailed + &quot;\nSucceeded: &quot; + numSucceeded + &quot; \n Due to: &quot; + errors.join(&quot;\n&quot;));
+} else {
+alert(&quot;Number of records deleted: &quot; + numSucceeded);
+}
+}
+window.location.reload();
+}</url>
+    </webLinks>
+</CustomObject>

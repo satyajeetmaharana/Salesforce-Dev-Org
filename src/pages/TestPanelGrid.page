@@ -1,0 +1,48 @@
+<apex:page >
+<style type="text/css">
+    .col1 {text-align:left;}
+    .col2 {text-align:center;}
+    .col3 {text-align:right;}        
+</style>
+<apex:form >
+<apex:pageBlock >
+          <apex:panelGrid width="100%" columns="3" columnClasses="col1, col2, col3">
+            <apex:outputText > Page 1 of 10</apex:outputText> 
+            
+            <apex:outputPanel >
+            <apex:outputPanel rendered="true" >
+            <apex:outputText value="< "/>
+                <apex:commandLink value="First"  />
+            </apex:outputPanel>
+             <!--<apex:outputPanel rendered="true" >
+                <apex:outputText value="< First "/>
+            </apex:outputPanel>-->
+            <apex:outputPanel rendered="true" >
+             <apex:outputText value=" | "/>
+                <apex:commandLink value="Previous"/>
+            </apex:outputPanel>
+             <!--<apex:outputPanel rendered="true" >
+              <apex:outputText value="| Previous "/>
+            </apex:outputPanel>-->
+            <apex:outputPanel rendered="true" >
+              <apex:outputText value=" | "/>
+                <apex:commandLink value="Next"/>
+            </apex:outputPanel>
+            <!--
+             <apex:outputPanel rendered="true" >
+                <apex:outputText value="| Next "/>
+            </apex:outputPanel>-->
+            <apex:outputPanel rendered="true">
+             <apex:outputText value=" | "/>
+                <apex:commandLink value="Last"/> <apex:outputText value=" >"/>
+            </apex:outputPanel>
+            <!--
+             <apex:outputPanel rendered="true" >
+                <apex:outputText value="| Last >"/>
+            </apex:outputPanel> -->
+            </apex:outputPanel>
+             <apex:outputText >  Record 1-10 of 25</apex:outputText>
+             </apex:panelGrid>
+</apex:pageBlock>             
+</apex:form>
+</apex:page>

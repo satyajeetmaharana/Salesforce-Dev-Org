@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customObject>true</customObject>
+    <description>SDoc Jobs are used to auto-generate and distribute S-Docs.
+Supports batch provessing and workflow</description>
+    <mobileReady>false</mobileReady>
+    <motif>Custom67: Gears</motif>
+</CustomTab>

@@ -1,0 +1,25 @@
+<apex:page standardController="Project_Selection__c" extensions="ProjectControllerExtension">
+  <h1><u><b>New Project Selection</b></u></h1>
+  <apex:form >
+      <apex:pageBlock >
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!saveProject}" value="Save"/>
+            </apex:pageBlockButtons>
+           <apex:pageBlockSection title="Create a new Project" columns="2">
+                <apex:inputField value="{!Project_Selection__c.ProjectPickList_del__c}">
+                <apex:actionSupport event="onchange" reRender="changeRequest" />
+                </apex:inputField>
+                <apex:inputField value="{!Project_Selection__c.StatusPickList__c}"/>
+            </apex:pageBlockSection>
+            
+            <apex:outputPanel id="changeRequest">
+              <apex:pageBlockSection rendered="{!Project_Selection__c.ProjectPickList_del__c=='IT'}" title="IT">
+              </apex:pageBlockSection>
+              <apex:pageBlockSection rendered="{!Project_Selection__c.ProjectPickList_del__c=='BFS'}" title="BFS">
+              </apex:pageBlockSection>
+               <apex:pageBlockSection rendered="{!Project_Selection__c.ProjectPickList_del__c=='OTHERS'}" title="OTHERS">
+              </apex:pageBlockSection>
+           </apex:outputPanel>
+      </apex:pageBlock>  
+  </apex:form>
+</apex:page>

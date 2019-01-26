@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Student</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Students</value>
+    </caseValues>
+    <fields>
+        <label><!-- Class --></label>
+        <name>Class_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created By ID --></label>
+        <name>CreatedById__c</name>
+    </fields>
+    <fields>
+        <label><!-- Created Date --></label>
+        <name>CreatedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date Of Birth --></label>
+        <name>Date_Of_Birth_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email --></label>
+        <name>Email_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deleted --></label>
+        <name>IsDeleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified By ID --></label>
+        <name>LastModifiedById__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Modified Date --></label>
+        <name>LastModifiedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Referenced Date --></label>
+        <name>LastReferencedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Viewed Date --></label>
+        <name>LastViewedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Married --></label>
+        <name>Married_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Student Name --></label>
+        <name>Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner ID --></label>
+        <name>OwnerId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Photo --></label>
+        <name>Photo_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profile Image --></label>
+        <name>Profile_Image_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Spouse Name --></label>
+        <name>Spouse_Name_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- System Modstamp --></label>
+        <name>SystemModstamp__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

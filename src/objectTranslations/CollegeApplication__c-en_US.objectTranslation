@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>College Application</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>College Applications</value>
+    </caseValues>
+    <fields>
+        <label><!-- Add Comments Dump --></label>
+        <name>AddCommentsDump__c</name>
+    </fields>
+    <fields>
+        <label><!-- Add Comments --></label>
+        <name>Add_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Annual Tution Fees --></label>
+        <name>AnnualTutionFees__c</name>
+    </fields>
+    <fields>
+        <label><!-- Application Fees --></label>
+        <name>ApplicationFees__c</name>
+    </fields>
+    <fields>
+        <label><!-- College --></label>
+        <name>College__c</name>
+        <relationshipLabel><!-- College Applications --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Current Total Cost --></label>
+        <name>CurrentTotalCost__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deadline --></label>
+        <name>Deadline__c</name>
+    </fields>
+    <fields>
+        <label><!-- GRE Score Cost --></label>
+        <name>GRE_Score_Cost__c</name>
+    </fields>
+    <fields>
+        <label><!-- Home Page --></label>
+        <name>HomePage__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsInactive --></label>
+        <name>IsInactive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Comment Dump --></label>
+        <name>LastCommentDump__c</name>
+    </fields>
+    <fields>
+        <label><!-- Login Page --></label>
+        <name>LoginPage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Password --></label>
+        <name>Password__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Application In Progress</masterLabel>
+            <translation><!-- Application In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Application Submitted</masterLabel>
+            <translation><!-- Application Submitted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Discovery/Initial Analysis</masterLabel>
+            <translation><!-- Discovery/Initial Analysis --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SOP/LOR In Progress</masterLabel>
+            <translation><!-- SOP/LOR In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shortlisted</masterLabel>
+            <translation><!-- Shortlisted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shortlisted &amp; Signed Up</masterLabel>
+            <translation><!-- Shortlisted &amp; Signed Up --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- TOEFL Score Cost --></label>
+        <name>TOEFL_Score_Cost__c</name>
+    </fields>
+    <fields>
+        <label><!-- Username --></label>
+        <name>Username__c</name>
+    </fields>
+    <fields>
+        <label><!-- Window Open --></label>
+        <name>WindowOpen__c</name>
+    </fields>
+    <fields>
+        <label><!-- Yocket Link --></label>
+        <name>YocketLink__c</name>
+    </fields>
+    <layouts>
+        <layout>College Layout</layout>
+        <sections>
+            <label><!-- College Details --></label>
+            <section>College Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

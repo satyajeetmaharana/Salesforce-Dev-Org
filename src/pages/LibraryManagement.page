@@ -1,0 +1,37 @@
+<apex:page docType="html-5.0" controller="LibraryManagementController" showHeader="false" sidebar="false">
+    <h style="text-align:center;color:blue;font-size:30px"><u><b>Library Management</b></u></h>
+    <br/><br/>
+    <apex:pageBlock ><apex:pageMessages id="showmsg"></apex:pageMessages></apex:pageBlock>
+    <apex:form title="Form" id="form1"> 
+        <br/>
+        <apex:panelGrid columns="4" id="theGrid" bgcolor="green"> 
+            Book Name: <apex:inputText id="book_name" value="{!book_name}" />
+            Author: <apex:inputText id="author" value="{!author}"/>
+            Edition: <apex:inputText id="edition" value="{!edition}"/>
+            Date Of Issue: <apex:input type="date" id="date_of_issue" value="{!date_of_issue}"/>
+        </apex:panelGrid>
+        <br/> <br/>
+        <apex:commandLink action="{!saveToTable}" styleClass="btn" value="Save" style="float:centre">
+           <!-- <apex:commandbutton value="Save" /> -->
+        </apex:commandLink>
+    </apex:form>
+    <apex:form rendered="true">
+        <apex:pageBlock >
+            <apex:pageBlockTable value="{!lstOfBooks}" var="b" columns="6" rendered="true"> <apex:variable value="{!0}" var="cnt"/>
+                <apex:column headerValue="Book Name" value="{!b.Name}"/>
+                <apex:column headerValue="Author" value="{!b.author__c}"/>
+                <apex:column headerValue="Edition" value="{!b.edition__c}"/>
+                <apex:column headerValue="Date Of Issue" value="{!b.date_of_issue__c}"/>
+                <apex:column headerValue="Date Of Return" value="{!b.date_of_return__c}"/>
+                <apex:column headerValue="Delete">
+                    <apex:commandLink action="{!deleteFromTable}" styleClass="btn" value="Delete">
+                        <apex:param name="index" value="{!cnt}"/>
+                    </apex:commandLink>    
+                    <apex:variable var="cnt" value="{!cnt+1}"/> 
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        <apex:commandLink action="{!saveToDatabase}" styleClass="btn" value="Submit Request" style="float:centre">
+        </apex:commandLink>
+    </apex:form>
+</apex:page>

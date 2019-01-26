@@ -1,0 +1,6 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="1" >
+<![CDATA[Hi Satyajeet,<div><br></div><div>The application window is now open.&nbsp;</div><div>Application record Link :&nbsp;{!CollegeApplication__c.Name}</div><div>College Login URL :&nbsp;{!CollegeApplication__c.LoginPage__c}</div><div>Username :&nbsp;{!CollegeApplication__c.Username__c}</div><div>Status :&nbsp;{!CollegeApplication__c.Status__c}</div><div>Application Deadline :&nbsp;{!CollegeApplication__c.Deadline__c}</div><div><br></div><div><br></div><div>Please take action at the earliest.</div><div><br></div><div><br></div><div>Thanks &amp; Regards,</div><div>Satyajeet Maharana</div><div><br></div>]]></td>
+</tr>
+</table>

@@ -1,0 +1,26 @@
+<apex:page standardController="Lead" extensions="LeadListExtension" recordSetVar="leads" tabStyle="Lead">
+    <!--<apex:detail subject="Leads" relatedList="true" />-->
+    <h1>Congratulations</h1>
+    This is your new Page
+    <apex:relatedList list="Leads" rendered="true"/>
+    <apex:pageBlock title="Custom Lead List" id="pb">
+        <apex:dataTable value="{!lstOfLeads}" var="listitem" id="leadsTable">
+            <apex:column headerValue="Name" value="{!listitem.Company}"/>
+            <apex:column headerValue="Approval Status" value="{!listitem.Approval_Status__c}"/>
+        </apex:dataTable>
+    </apex:pageBlock>
+    <apex:form >
+        Page: <apex:outputText value="{!pageNumber}"/>  of  <apex:outputText value="{!totalPages}"/>
+        <apex:panelGrid columns="7">
+            <apex:commandLink action="{!first}">First</apex:commandlink>
+            <apex:commandLink action="{!previous}" rendered="{!hasPrevious}">Previous</apex:commandlink>
+            <apex:commandLink action="{!next}" rendered="{!hasNext}">Next</apex:commandlink>
+            <apex:commandLink action="{!last}">Last</apex:commandlink>
+            <apex:commandLink action="{!setPageSize10}" reRender="pb">10</apex:commandLink>
+            <apex:commandLink action="{!setPageSize20}" reRender="pb">20</apex:commandLink>
+            <apex:commandLink action="{!setPageSize50}" reRender="pb">50</apex:commandLink>
+            <apex:commandLink action="{!setPageSize100}" reRender="pb">100</apex:commandLink>
+            <apex:commandLink action="{!setPageSize200}" reRender="pb">200</apex:commandLink>
+        </apex:panelGrid>
+    </apex:form>
+</apex:page>

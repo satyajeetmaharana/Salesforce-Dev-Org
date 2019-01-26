@@ -1,0 +1,66 @@
+<apex:page controller="UserRegistrationPageController" extensions="reCAPTCHA" standardStylesheets="false" sidebar="false" showHeader="false">
+    <html>
+     <head>
+          <h1> Hi This is your home page </h1>
+          <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+      </head>
+      <body>
+          <apex:form >   
+              <apex:pageMessages id="msg"></apex:pageMessages>
+              <table>
+                  <tr>
+                      <td>Username : </td>
+                      <td>
+                          <apex:inputText value="{!newUser.UserName__c}" styleClass="form-control"/>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>Email : </td>
+                      <td>
+                          <apex:inputText value="{!newUser.Email__c}" styleClass="form-control"/>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>Password : </td>
+                      <td>
+                          <apex:inputSecret value="{!newUser.Password__c}" styleClass="form-control"/>
+                      </td>
+                  </tr>
+              </table>
+              <apex:actionFunction action="{!createUser}" name="createUser"/>
+              <apex:commandButton action="{!verify}" onComplete="createUser()" value="Create User" reRender="msg" styleClass="btn btn-primary"/>
+              <apex:pageBlock >
+                  <apex:pageblockSection >
+                  <!-- Show the reCAPTCHA form if they are not yet verified -->
+                  <apex:pageBlockSectionItem rendered="{! NOT(verified)}">
+                    <!-- reCAPTCHA verification 
+                         Source: https://developers.google.com/recaptcha/docs/display -->
+                    <script type="text/javascript"
+                        src="https://www.google.com/recaptcha/api/challenge?k={!publicKey}">
+                    </script>
+                    <noscript>
+                        <iframe src="https://www.google.com/recaptcha/api/noscript?k={!publicKey}"
+                        height="300" width="500" frameborder="0"></iframe><br/>
+                        <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+                        <input type="hidden" name="recaptcha_response_field"
+                            value="manual_challenge"/>
+                    </noscript>
+                    <!-- end reCAPTCHA verification -->
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem >
+                    <apex:commandButton action="{!verify}" 
+                            value="Check If I'm Human" rendered="{! NOT(verified)}"/>
+                </apex:pageBlockSectionItem>
+
+                <!-- Otherwise, they are verified, show a confirmation message -->
+                <apex:pageBlockSectionItem rendered="{!verified}">
+                    <p>reCAPTCHA verification suggests that you're not a 'bot.</p>
+                </apex:pageBlockSectionItem>   
+                </apex:pageBlockSection>
+
+                </apex:pageBlock>
+          </apex:form>
+      </body>
+  </html>
+</apex:page>

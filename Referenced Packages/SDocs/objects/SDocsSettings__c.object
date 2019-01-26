@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>ConnectedAppCertificateName__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Name of the certificate Record you used to sign the SDocs connected App.
+In the Connected App settings, under the API (Enable OAuth Settings) header a Digital Signature was uploaded. This corresponds the the name (Label) of the certificate record.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name of the certificate Record you used to sign the SDocs connected App.
+In the Connected App settings, under the API (Enable OAuth Settings) header a Digital Signature was uploaded. This corresponds the the name (Label) of the certificate record.</inlineHelpText>
+        <label>ConnectedAppCertificateName</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ConnectedAppConsumerKey__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Consumer Key for the SDocs connected App.
+In the Connected App settings record for S-Docs, under the API (Enable OAuth Settings) header section, look for the field labeled a field labeled &quot;Consumer Key&quot;.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Consumer Key for the SDocs connected App.
+In the Connected App settings record for S-Docs, under the API (Enable OAuth Settings) header section, look for the field labeled a field labeled &quot;Consumer Key&quot;.</inlineHelpText>
+        <label>ConnectedAppConsumerKey</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ConnectedAppLoginURL__c</fullName>
+        <defaultValue>&quot;https://login.salesforce.com&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Production: https://login.salesforce.com
+Sandbox: https://test.salesforce.com</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Production: https://login.salesforce.com
+Sandbox: https://test.salesforce.com</inlineHelpText>
+        <label>ConnectedAppLoginURL</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ConnectedAppUserName__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Optional - only if you want the the process to run under a specific user. If a userName is not provided in the call, then this user will be used.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Optional - only if you want the the process to run under a specific user. If a userName is not provided in the call, then this user will be used.</inlineHelpText>
+        <label>ConnectedAppUserName</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Platform_Encryption_Enabled__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Check only if platform encryption is enabled in org.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Check only if platform encryption is enabled in org.</inlineHelpText>
+        <label>Platform Encryption Enabled</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SD_Jobs_Batch_Size__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Recommended batch size is 30.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Recommended batch size is 30.</inlineHelpText>
+        <label>SD Jobs Batch Size</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SD_Jobs_Top_of_Queue__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Global Setting will move all S-Docs Batch jobs to top of queue ahead of any other asynchronous jobs (eg Batch Jobs, Future Callouts etc)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Global Setting will move all S-Docs Batch jobs to top of queue ahead of any other asynchronous jobs (eg Batch Jobs, Future Callouts etc)</inlineHelpText>
+        <label>SD Jobs Move to Top of Flex Queue</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>SDocsSettings</label>
+    <visibility>Public</visibility>
+</CustomObject>

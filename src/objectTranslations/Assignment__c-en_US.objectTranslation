@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Assignment</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Assignments</value>
+    </caseValues>
+    <fields>
+        <label><!-- Date Sent --></label>
+        <name>Date_Sent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Residence? --></label>
+        <name>Residence__c</name>
+    </fields>
+    <fields>
+        <label><!-- Test 1 --></label>
+        <name>Test_1__c</name>
+        <picklistValues>
+            <masterLabel>Not Residence</masterLabel>
+            <translation><!-- Not Residence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Residence</masterLabel>
+            <translation><!-- Residence --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Test 2 --></label>
+        <name>Test_2__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Residence</masterLabel>
+            <translation><!-- Residence --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- User --></label>
+        <name>User__c</name>
+        <relationshipLabel><!-- Assignments --></relationshipLabel>
+    </fields>
+    <startsWith>Vowel</startsWith>
+    <validationRules>
+        <errorMessage><!-- Not residence cannot have test 2 as 2 --></errorMessage>
+        <name>TestValidation</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,444 @@
+<apex:page id="page1" Controller="SDOC.SDListCreateController" 
+action="{!init}" tabstyle="SDOC__SDTemplate__c" >
+ 
+<apex:stylesheet value="/sCSS/24.0/sprites/1297816277000/Theme3/default/gc/versioning.css" />
+<style>
+.btn { height:22px; }
+</style>
+
+<apex:actionStatus id="statLoad">
+    <apex:facet name="start">
+        <div id="blur" 
+        style="z-index:1001;position:absolute; left:1px; top:1px; width:100%; height:100%; text-align:center; vertical-align: middle; background-color: #dcdcdc; opacity:0.7;filter:alpha(opacity=70)">
+        </div>
+        <div id="StatusBox" 
+        style="z-index:1001;position:absolute; left:50%; top:300px; width: 120px; height:50px; opacity:1;filter:alpha(opacity=100)">
+        <table border="1" cellpadding="0" cellspacing="0" style="border-left-color: #336699;
+        border-bottom-color: #336699; width: 120px; border-top-color: #336699; height:50px;
+        border-right-color:#336699; background-color:#ffffff;">
+        	<tr>
+        		<td align="left" valign="top">
+        			<table border="0" cellpadding="4" cellspacing="0" style="width: 100%; height: 100%">
+        				<tr>
+        					<td style="border-bottom-color:#336699; border-bottom-width:0px; border-bottom-style:solid;vertical-align:middle;">
+        						<img src="{!URLFOR($Resource.SDoc,'spinner_large.gif')}"/></td>
+        					<td style="border-bottom-color:#336699; border-bottom-width:0px; border-bottom-style:solid;vertical-align:middle;color:darkred;font-size:11pt;font-weight:bold;">
+        					&nbsp;Updating...</td>
+        				</tr>
+        			</table>
+        		</td>
+        	</tr>
+        </table>
+        </div>
+    </apex:facet>
+</apex:actionStatus>
+
+
+ <apex:tabPanel switchType="client" id="theTabPanel"  selectedTab="tabTwo"
+    styleClass="theTabPanel" tabClass="theTabPanel" contentClass="tabContent" 
+    activeTabClass="activeTab" 
+    inactiveTabClass="inactiveTab">
+
+<apex:tab label="Add Records" name="name1" id="tabOne">
+	 <apex:pageMessages />      
+
+    <apex:sectionHeader title="S-Docs Mass Merge" subtitle="Add records for Mass Merge"/>
+    
+	<apex:pageBlock >
+		<apex:pageBlockSection columns="1">
+			<apex:pageBlockSectionItem >
+				<apex:panelGroup id="panelOName">
+					<table width="100%">
+					<tr>
+						<td>
+							<apex:form id="form1">
+  						       <apex:actionPoller action="{!loadWL}" 
+						       rerender="panelBSize,wlPanel" interval="5"/>
+								<b>Object:&nbsp;&nbsp;</b> <apex:selectList id="objName" size="1" value="{!objectName}">
+                        			<apex:selectOptions value="{!objectNames}"/>
+                        			<apex:actionSupport event="onchange"  action="{!objChange}" rerender="theTabPanel" status="statLoad"/>
+                    			</apex:selectList>
+							</apex:form> 
+						</td>
+						<td><apex:outputpanel id="panelBSize">
+							Current Batch Size: {!listSize}
+							</apex:outputpanel>
+						</td>
+					</tr>
+					</table>
+				</apex:panelGroup>
+    		</apex:pageBlockSectionItem>
+			<apex:pageBlockSectionItem >
+				<apex:panelGroup id="panelMain">
+				    <apex:enhancedList type="{!ObjectName}" height="400" rowsPerPage="25" 
+				    rendered="{!NOT(objectName=='Quote') && NOT(objectName=='CampaignMember')}" />
+
+
+
+
+
+	  <apex:outputpanel id="panelQ" rendered="{!objectName=='Quote'}">
+					<apex:form >
+						 <apex:pageMessages id="errorsQ" />
+						 <table width="100%" border="0">
+						  <tr>  
+						    <td width="200" valign="top">
+						      <apex:pageBlock title="Search" mode="edit" id="criteria">
+						      <script type="text/javascript">
+						      function doSearchQ() {
+						        searchServer(
+						          document.getElementById("name").value
+						          );
+						      }
+						      </script>  
+						
+						      <apex:actionFunction name="searchServer" action="{!runSearchCM}" rerender="resultsQ,debugQ,errorsQ">
+						          <apex:param name="name" value="" />
+						          <apex:param name="lastName" value="" />
+						          <apex:param name="accountName" value="" />
+						      </apex:actionFunction>
+						
+						      <table cellpadding="2" cellspacing="2">
+						      <tr>
+						        <td style="font-weight:bold;">Name<br/>
+						        <input type="text" id="name" onkeyup="doSearchQ();"/>
+						        </td>
+						      </tr>
+						      <tr>
+						        <td style="font-weight:bold;">Last Name<br/>
+						        <input type="text" id="lastName" onkeyup="doSearchQ();"/>
+						        </td>
+						      </tr>
+						      <tr>
+						        <td style="font-weight:bold;">Account<br/>
+						        <input type="text" id="accountName" onkeyup="doSearchQ();"/>
+						        </td>
+						      </tr> 
+						      </table>
+						      </apex:pageBlock>
+						    </td>
+						    <td valign="top">
+						    	<apex:pageBlock mode="edit" id="resultsQ">
+						            <apex:pageBlockButtons >
+						                <apex:commandButton value="Add To Mass Merge List" action="{!addToQList}" 
+						                status="statLoad" rerender="table"/>
+						            </apex:pageBlockButtons>
+						            <!-- In our table we are displaying the cQuote records -->
+						            
+						            <apex:pageBlockTable value="{!listWrapper}" var="ow" id="table">
+						            	<apex:column width="25px">
+                            				<apex:inputCheckbox value="{!ow['checked']}">
+                            				</apex:inputCheckbox>
+                        				</apex:column>
+								        <apex:column headerValue="Quote Name">
+		                   					 <a href="/{!ow['obj.id']}" target="_blank">{!ow['obj.name']}</a>
+		                				</apex:column> 
+						                <apex:column value="{!ow['obj.Status']}"/>
+						                <apex:column value="{!ow['obj.QuoteNumber']}"/> 
+						                <apex:column value="{!ow['obj.opportunity.name']}" />
+						            </apex:pageBlockTable>	
+					
+			        			</apex:pageBlock>
+						
+						    </td>
+						  </tr>
+						  <tr>
+						  <td>
+						 	 <apex:outputText id="debugQ" value="{!debugSoql}" rendered="false" />           
+						  </td>
+						  </tr>
+						  </table>
+						  </apex:form>
+	</apex:outputpanel>
+
+<apex:outputpanel id="panelCM" rendered="{!objectName=='CampaignMember'}">
+					<apex:form >
+						 <apex:pageMessages id="errorsCM" />
+						 <table width="100%" border="0">
+						  <tr>  
+						    <td width="200" valign="top">
+						      <apex:pageBlock title="Search" mode="edit" id="criteria">
+						      <script type="text/javascript">
+						      function doOSearch() {
+						        searchServerObj(
+						          document.getElementById("name").value
+						          );
+						      }
+						      </script> 
+						
+						      <apex:actionFunction name="searchServerObj" action="{!runSearchCM}" rerender="resultsCM,debugCM,errorsCM">
+						          <apex:param name="name" value="" />
+						      </apex:actionFunction>
+						
+						      <table cellpadding="2" cellspacing="2">
+						      <tr>
+						        <td style="font-weight:bold;">Campaign Name<br/>
+						        <input type="text" id="name" onkeyup="doOSearch();"/>
+						        </td>
+						      </tr> 
+						      </table>
+						      </apex:pageBlock>
+						    </td>
+						    <td valign="top">
+						    	<apex:pageBlock title="Campaigns" mode="edit" id="resultsCM">
+						            <apex:pageBlockButtons >
+						                <apex:commandButton value="Add All Campaign Members" action="{!addToCMList}" 
+						                status="statLoad" rerender="tableCM"/>
+						            </apex:pageBlockButtons>
+						            <!-- In our table we are displaying the cQuote records -->
+						            <apex:pageBlockTable value="{!listWrapper}" var="ow" id="tableCM">
+						            	<apex:column width="25px">
+                            				<apex:inputCheckbox value="{!ow['checked']}">
+                            				</apex:inputCheckbox>
+                        				</apex:column>
+								        <apex:column headerValue="Name">
+		                   					 <a href="/{!ow['obj.id']}" target="_blank">{!ow['obj.name']}</a>
+		                				</apex:column> 
+						                <apex:column value="{!ow['obj.Status']}"/>
+						                <apex:column value="{!ow['obj.NumberOfContacts']}"/> 
+						                <apex:column value="{!ow['obj.NumberOfLeads']}" />
+						                <apex:column value="{!ow['obj.NumberOfResponses']}"/>
+						                <apex:column value="{!ow['obj.OwnerId']}" />
+						                <apex:column value="{!ow['obj.Description']}"/>
+						    
+						            </apex:pageBlockTable>
+			        			</apex:pageBlock>
+						
+						    </td>
+						  </tr>
+						  <tr>
+						  <td>
+						 	 <apex:outputText id="debugCM" value="{!debugSoql}" rendered="false" />           
+						  </td>
+						  </tr>
+						  </table>
+						  </apex:form>
+	</apex:outputpanel>
+
+
+				    
+				    
+				    
+				    
+				</apex:panelGroup>	  					  
+			</apex:pageBlockSectionItem>
+		</apex:pageBlockSection>
+	</apex:pageBlock>
+</apex:tab>
+
+<apex:tab label="Choose Templates" name="name2" id="tabTwo">
+	 <apex:pageMessages />      
+    <apex:sectionHeader title="S-Docs Mass Merge" subtitle="Choose templates for Mass Merge"/>
+<apex:pageBlock >
+<table width="100%">
+<tr valign="top">
+<td> 
+    <apex:pageBlockSection columns="1" collapsible="false">
+            <apex:pageBlockSectionItem >
+                <apex:panelGroup id="panel3g">
+                    <apex:outputText >&nbsp;&nbsp;&nbsp;&nbsp;
+                         <img src="{!URLFOR($Resource.SDoc,'checkbox_arrow.png')}" />
+                         <Button Class="btn" 
+                         onclick="RichFaces.switchTab('page1:theTabPanel','page1:tabThree','name3');">
+                         Go To Next Step</Button>
+                    </apex:outputText>
+                    <apex:outputpanel style="overflow:scroll;height:400px;" layout="block">
+                    <apex:form id="form2a">
+                    <apex:pageBlockTable value="{!docsList}"  var="c" rendered="{!NOT(ISNULL(docsList))}">
+                        <apex:column width="25px">
+                            <apex:inputCheckbox value="{!c.checked}">
+                            <apex:actionsupport event="onclick" action="{!addDoc}" 
+                            rerender="panel4g,panelStartBtn1,panelStartBtn2" status="statLoad" />
+                            </apex:inputCheckbox>
+                        </apex:column>
+                        <apex:column headerValue="Name"><apex:outputText value="{!c.t.SDOC__Format_Icon__c}" escape="false"/>
+                        &nbsp;&nbsp;<apex:outputText value="{!c.t.Name}"/></apex:column>
+                        <apex:column value="{!c.t.SDOC__Description__c}" headerValue="Description"/>
+                    </apex:pageBlockTable>
+                    </apex:form>
+                    </apex:outputpanel> 
+                </apex:panelGroup>
+            </apex:pageBlockSectionItem>
+    </apex:pageBlockSection>
+</td><td></td>
+<td>
+    <apex:panelGroup id="panel4g">
+        <apex:pageBlockSection title="Selected Documents" columns="1" collapsible="false" rendered="{!hasSelectedDocs}">
+             <apex:pageBlockSectionItem >
+                                 <apex:form id="form2b">
+             
+                    <apex:pageBlockTable value="{!selectedDocs}" var="ca" columnsWidth="50px, *" cellpadding="0" cellspacing="0">
+                        <apex:column headerValue="Remove">
+                                <apex:commandLink value="X" action="{!removeDoc}" styleClass="btn" 
+                                rerender="panel4g,panel3g,panelStartBtn1,panelStartBtn2" status="panel4Status">
+                                    <apex:Param name="tid" value="{!ca.t.ID}" />
+                                </apex:commandLink>
+                        </apex:column>
+                        <apex:column headerValue="Name"><apex:outputText value="{!ca.t.SDOC__Format_Icon__c}" escape="false"/>
+                        &nbsp;&nbsp;<apex:outputText value="{!ca.t.Name}"/></apex:column>
+                    </apex:pageBlockTable>
+                    </apex:form>
+                </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+    </apex:panelGroup>
+    <apex:actionStatus id="panel4Status">
+        <apex:facet name="start">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <img src="{!URLFOR($Resource.SDoc,'spinner.gif')}" /> updating...
+        </apex:facet>
+    </apex:actionStatus>    
+</td>
+</tr>
+<tr>
+    <td width="65%"></td>
+    <td width="5%"></td>
+    <td width="30%"></td>
+</tr>
+</table>
+</apex:pageBlock>
+</apex:tab>
+
+<apex:tab label="Generate Docs" name="name3" id="tabThree">
+ 	 <apex:pageMessages /> 
+<apex:form id="form3"> 	  
+      <apex:sectionHeader title="S-Docs Mass Merge" subtitle="Start Mass Merge"/>
+       <apex:pageBlock >
+        <apex:panelGroup id="wlPanel">
+        <apex:pageBlockSection columns="1" collapsible="false">
+
+       		<apex:outputpanel id="panelStartBtn1">
+                    <apex:commandLink rendered="{!isMassMergeDoc}" styleClass="btn" value="Create Single Mass Merge Doc" target="_blank" 
+                          action="{!printDocANDLabels}" style="padding:10px 10px 10px 10px; text-decoration:none; color:black;"/>
+                    
+                    <apex:outputText rendered="{!NOT(isMassMergeDoc)}">
+                    	&nbsp;&nbsp;&nbsp;&nbsp;
+                        <img src="{!URLFOR($Resource.SDoc,'checkbox_arrow.png')}" />
+                        <!-- disable when no record, no templates, isRunning or no additional records added -->
+                        <apex:commandButton action="{!printDoc}" value="Start Mass Merge" styleClass="btn" status="statLoad"
+                        disabled="{!NOT(hasSelectedDocs) || listsize==0 || hasCompleted}"
+                        rerender="wlPanel"/> &nbsp;&nbsp;&nbsp;&nbsp;
+                    </apex:outputText>
+ 		           	
+ 		           	<apex:inputCheckbox value="{!logActivityHistory}" rendered="{!completedSize==0 && hasSelectedDocs && not(hasCompleted)}"/>
+    				<apex:outputText rendered="{!completedSize==0 && hasSelectedDocs && not(hasCompleted)}" >&nbsp;&nbsp;&nbsp;&nbsp;Log an activity for each record included in this Mass Merge</apex:outputText>
+                     
+                    
+                    <apex:outputText rendered="{!listsize==0}">                    
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    [You must add at least one record to continue]
+                    </apex:outputText>
+                    <apex:outputText rendered="{!NOT(hasSelectedDocs) && not(hasCompleted)}">
+                    	&nbsp;&nbsp;&nbsp;&nbsp;
+                    [You must choose at least one template to continue]
+                    </apex:outputText>
+                    <apex:outputText rendered="{!(hasSelectedDocs || hasCompleted) && completedSize>0 && NOT(isMassMergeDoc)}">                    
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Progress: {!completedSize} of {!listSize} Records Completed
+                    </apex:outputText>
+                    <apex:outputText rendered="{!errorSize>0}">                    
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Errors: {!errorSize} - Click Error link next to record to view details
+                    </apex:outputText> 
+            </apex:outputpanel>
+            <apex:outputpanel id="panelStartBtn2">
+                    <apex:outputText rendered="{!hasCompleted && NOT(isMassMergeDoc)}">
+                    	&nbsp;&nbsp;&nbsp;&nbsp;
+                        <img src="{!URLFOR($Resource.SDoc,'checkbox_arrow.png')}" />
+                        <apex:commandLink styleClass="btn" value="COMBINE ALL into single printable PDF" target="_blank" 
+                         action="{!openMergedDoc}" style="padding:6px 5px 6px 5px; margin:3px; text-decoration:none; color:black;">
+	                         <apex:param id="docTypePDF" name="docType" value="PDF" />
+    					</apex:commandLink>
+                        <apex:commandLink styleClass="btn" value="COMBINE ALL into single printable MS Word Doc" target="_blank" 
+                         action="{!openMergedDoc}" style="padding:6px 5px 6px 5px; margin:3px; text-decoration:none; color:black;">
+	                         <apex:param id="docTypeDOC" name="docType" value="DOC" />
+    					</apex:commandLink>                     
+                    </apex:outputText>
+                    <apex:outputText rendered="{!NOT(hasCompleted) && NOT(isMassMergeDoc)}">
+                    	&nbsp;&nbsp;&nbsp;&nbsp;
+                        <img src="{!URLFOR($Resource.SDoc,'checkbox_arrow.png')}" />
+                        <apex:commandButton action="{!printDoc}" value="COMBINE ALL into single printable PDF"
+                        styleClass="btn" disabled="true"/>
+                        <apex:commandButton action="{!printDoc}" value="COMBINE ALL into single printable MS Word Doc"
+                        styleClass="btn" disabled="true"/>
+                    </apex:outputText>
+            </apex:outputpanel>
+        <apex:outputText rendered="{!listsize>0}">&nbsp;&nbsp;&nbsp;&nbsp;
+            <img src="{!URLFOR($Resource.SDoc,'checkbox_arrow.png')}" />
+            <apex:commandLink styleClass="btn" value="REMOVE ALL" rerender="wlPanel" status="statLoad" 
+                                action="{!clearList}" style="padding:6px 5px 6px 5px; text-decoration:none; color:black;"/> 
+        </apex:outputText>
+            <apex:pageBlockSectionItem >
+            <apex:outputpanel style="overflow:scroll;height:250px;" layout="block">
+            <apex:pageBlockTable value="{!objWrapper}" var="ow">
+                 <apex:column width="20px" headerValue="Remove">
+                    <apex:actionsupport event="onclick" rerender="wlPanel" status="statLoad">
+                        <apex:commandLink value="X" action="{!removeRec}" styleClass="btn">
+                            <apex:Param name="rid" value="{!ow['obj.id']}"/>
+                        </apex:commandLink>
+                    </apex:actionsupport>
+                 </apex:column>
+                <apex:column headerValue="Name" rendered="{!objectName!='Case' && objectName!='CampaignMember'}">
+                    <a href="/{!ow['obj.id']}" target="_blank">{!ow['obj.name']}</a>
+                </apex:column>
+                <apex:column headerValue="Case Number" rendered="{!objectName=='Case' && objectName!='CampaignMember'}">
+                    <a href="/{!ow['obj.id']}" target="_blank">{!ow['obj.casenumber']}</a>
+                </apex:column>
+                <apex:column headerValue="Campaign Member" rendered="{!objectName=='CampaignMember'}">
+                    <a href="/{!ow['obj.id']}" target="_blank">
+                    <apex:outputText rendered="{!ow['obj.contactid'] !=null}">
+                    {!ow['obj.contact.name']}
+                    </apex:outputText>
+                    <apex:outputText rendered="{!ow['obj.leadid'] !=null}">
+                    {!ow['obj.lead.name']}
+                    </apex:outputText>
+                    </a>
+                </apex:column>
+               <apex:column headerValue="Campaign Member Type" rendered="{!objectName=='CampaignMember'}">
+                    <apex:outputText rendered="{!ow['obj.contactid'] !=null}">
+                    Contact
+                    </apex:outputText>
+                    <apex:outputText rendered="{!ow['obj.leadid'] !=null}">
+                    Lead
+                    </apex:outputText>
+                </apex:column>                 
+                <apex:column value="{!ow['job.Status_Link__c']}"/> 
+                <apex:column value="{!ow['obj.mailingstreet']}" rendered="{!objectName=='Contact'}"/>
+                <apex:column value="{!ow['obj.mailingCity']}" rendered="{!objectName=='Contact'}"/>
+                <apex:column value="{!ow['obj.mailingstate']}" rendered="{!objectName=='Contact'}"/>
+                <apex:column value="{!ow['obj.mailingpostalcode']}" rendered="{!objectName=='Contact'}"/>
+            </apex:pageBlockTable>
+            </apex:outputpanel>
+            </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            </apex:panelGroup>
+        </apex:pageBlock>
+        </apex:form>
+        </apex:tab>
+
+<apex:tab label="Print Labels" name="name4" id="tabFour">
+ 	 <apex:pageMessages />   
+      <apex:sectionHeader title="S-Docs Mass Merge" subtitle="Create Mailing Labels"/>
+ <apex:form id="form4">
+ <apex:pageBlock >
+<table width="65%">
+                <tr><td>Choose a Mailing Label Template&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td>
+                        <apex:outputLabel for="Labels">Label Template &nbsp;</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:selectList id="Labels" value="{!selectedLabel}" size="1" title="Labels" >
+                        <apex:selectOptions value="{!templatelabels}"></apex:selectOptions>                             
+                        </apex:selectList>
+                    </td>
+                    <td>
+                        <apex:commandLink styleClass="btn" value="Print Labels" target="_blank" 
+                          action="{!printLabels}" style="padding:10px 10px 10px 10px; text-decoration:none; color:black;"/> 
+                     </td>
+                </tr>
+</table>
+&nbsp;&nbsp;&nbsp;&nbsp;
+</apex:pageBlock>
+</apex:form>
+</apex:tab>
+
+</apex:tabPanel>    
+</apex:page>

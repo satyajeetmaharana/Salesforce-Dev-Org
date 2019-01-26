@@ -1,0 +1,19 @@
+<apex:page standardController="Book__c" extensions="BookController">
+  <h1><b>Book Detail</b></h1>
+  <apex:form >
+      <apex:pageBlock >
+          <apex:pageMessages ></apex:pageMessages>
+          <apex:pageBlockSection >
+              <apex:inputField label="Book Name" value="{!bookRecord.Name}" required="true"/>
+              <apex:inputField label="Author" value="{!bookRecord.author__c}"/>
+              <apex:inputField label="Edition" value="{!bookRecord.edition__c}"/>
+              <apex:inputField label="Date Of Issue" value="{!bookRecord.date_of_issue__c}"/>
+          </apex:pageBlockSection>
+          <apex:pageBlockButtons >
+              <apex:commandButton value="Save" action="{!save}" />
+              <apex:commandButton value="Save and New" action="{!saveAndNew}"/>
+              <apex:commandButton value="Cancel" action="{!cancel}"/>
+          </apex:pageBlockButtons>
+      </apex:pageBlock>         
+  </apex:form>
+</apex:page>

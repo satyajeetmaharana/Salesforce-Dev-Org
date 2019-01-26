@@ -1,0 +1,18 @@
+<apex:page controller="CreateEmployeeController">
+    <apex:form >  
+        <apex:pageBlock >
+            <apex:pageMessages ></apex:pageMessages>
+              <apex:pageBlockSection columns="1">
+                  <apex:inputField value="{!employeeRecord.Name}" label="Employee Name"/>
+                  <apex:inputField value="{!employeeRecord.Designation__c}" label="Employee Designation"/>
+                  <apex:inputField value="{!employeeRecord.Phone_Number__c}" label="Phone Number"/>
+                  <apex:outputField value="{!companyRecord.Name}" label="Company"/>
+                  <apex:inputField value="{!employeeRecord.Email__c}" label="Email"/>
+              </apex:pageBlockSection>
+              <apex:pageBlockButtons >
+                  <apex:commandButton value="Save" action="{!save}"/>
+                  <apex:commandButton value="Cancel" action="{!cancel}"/>
+              </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
